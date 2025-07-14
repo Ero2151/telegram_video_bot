@@ -1,5 +1,6 @@
 import os
 import re
+import sys
 import asyncio
 from aiogram import Bot, Dispatcher, types, F
 from aiogram.enums import ParseMode
@@ -7,7 +8,12 @@ from aiogram.filters import CommandStart
 from aiogram.types import Message, FSInputFile
 from yt_dlp import YoutubeDL
 
-TOKEN = os.getenv("7228583030:AAH5hWHOQYc4_HsK2R7lr11JQ6p4Dg7ojFc")  # токен из переменной среды
+print("Python version:", sys.version)
+
+TOKEN = os.getenv("BOT_TOKEN")
+if not TOKEN:
+    print("❌ Переменная BOT_TOKEN не задана.")
+    sys.exit(1)
 
 bot = Bot(token=TOKEN)
 dp = Dispatcher()
